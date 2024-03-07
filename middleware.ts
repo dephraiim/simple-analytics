@@ -31,7 +31,7 @@ export async function middleware(request: NextRequest) {
     const { country: edgeCountry } = geolocation(request);
     const pathname = request.nextUrl.pathname;
 
-    const country = edgeCountry || "local";
+    const country = edgeCountry || "local 2";
 
     analytics.views++;
     analytics.visitors.add(ip);

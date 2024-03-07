@@ -22,39 +22,33 @@ export async function POST(request: NextRequest) {
             views: analytics.views,
             visitors: analytics.visitors,
             PageView: {
-                create: Object.entries(analytics.pageViews).map(([url, count]) => ({
+                create: Object.entries(analytics.pageViews).map(([url]) => ({
                     url,
-                    count,
                 })),
             },
             Referrer: {
-                create: Object.entries(analytics.referrers).map(([domain, count]) => ({
+                create: Object.entries(analytics.referrers).map(([domain]) => ({
                     domain,
-                    count,
                 })),
             },
             Browser: {
-                create: Object.entries(analytics.browsers).map(([name, count]) => ({
+                create: Object.entries(analytics.browsers).map(([name]) => ({
                     name,
-                    count,
                 })),
             },
             OS: {
-                create: Object.entries(analytics.os).map(([name, count]) => ({
+                create: Object.entries(analytics.os).map(([name]) => ({
                     name,
-                    count,
                 })),
             },
             Country: {
-                create: Object.entries(analytics.countries).map(([name, count]) => ({
+                create: Object.entries(analytics.countries).map(([name]) => ({
                     name,
-                    count,
                 })),
             },
             Device: {
-                create: Object.entries(analytics.devices).map(([type, count]) => ({
+                create: Object.entries(analytics.devices).map(([type]) => ({
                     type,
-                    count,
                 })),
             },
         },
