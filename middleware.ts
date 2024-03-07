@@ -1,4 +1,3 @@
-// app/middleware.ts
 import { NextRequest, NextResponse, userAgent } from "next/server";
 import { geolocation, ipAddress } from "@vercel/edge";
 
@@ -55,7 +54,17 @@ export async function middleware(request: NextRequest) {
         analytics.devices[ua.device.type] = (analytics.devices[ua.device.type] || 0) + 1;
     }
 
-    console.log(analytics); // Log the analytics data
+    try {
+        await fetch(`${request.nextUrl.origin}/api/analytics`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ ...analytics, visitors: analytics.visitors.size }),
+        });
+    } catch (error) {
+        console.error("Error sending analytics data:", error);
+    }
 
     return NextResponse.next();
 }
