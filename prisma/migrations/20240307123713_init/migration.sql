@@ -10,7 +10,6 @@ CREATE TABLE "Analytics" (
 CREATE TABLE "PageView" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "url" TEXT NOT NULL,
-    "count" INTEGER NOT NULL,
     "analyticsId" INTEGER NOT NULL,
     CONSTRAINT "PageView_analyticsId_fkey" FOREIGN KEY ("analyticsId") REFERENCES "Analytics" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
@@ -19,7 +18,6 @@ CREATE TABLE "PageView" (
 CREATE TABLE "Referrer" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "domain" TEXT NOT NULL,
-    "count" INTEGER NOT NULL,
     "analyticsId" INTEGER NOT NULL,
     CONSTRAINT "Referrer_analyticsId_fkey" FOREIGN KEY ("analyticsId") REFERENCES "Analytics" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
@@ -28,7 +26,6 @@ CREATE TABLE "Referrer" (
 CREATE TABLE "Browser" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "name" TEXT NOT NULL,
-    "count" INTEGER NOT NULL,
     "analyticsId" INTEGER NOT NULL,
     CONSTRAINT "Browser_analyticsId_fkey" FOREIGN KEY ("analyticsId") REFERENCES "Analytics" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
@@ -37,7 +34,6 @@ CREATE TABLE "Browser" (
 CREATE TABLE "OS" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "name" TEXT NOT NULL,
-    "count" INTEGER NOT NULL,
     "analyticsId" INTEGER NOT NULL,
     CONSTRAINT "OS_analyticsId_fkey" FOREIGN KEY ("analyticsId") REFERENCES "Analytics" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
@@ -46,7 +42,6 @@ CREATE TABLE "OS" (
 CREATE TABLE "Country" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "name" TEXT NOT NULL,
-    "count" INTEGER NOT NULL,
     "analyticsId" INTEGER NOT NULL,
     CONSTRAINT "Country_analyticsId_fkey" FOREIGN KEY ("analyticsId") REFERENCES "Analytics" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
@@ -55,7 +50,6 @@ CREATE TABLE "Country" (
 CREATE TABLE "Device" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "type" TEXT NOT NULL,
-    "count" INTEGER NOT NULL,
     "analyticsId" INTEGER NOT NULL,
     CONSTRAINT "Device_analyticsId_fkey" FOREIGN KEY ("analyticsId") REFERENCES "Analytics" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );

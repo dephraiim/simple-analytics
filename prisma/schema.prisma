@@ -1,6 +1,6 @@
 datasource db {
     provider = "sqlite"
-    url      = "file:./prisma/dev.db"
+    url      = "file:./dev.db"
 }
 
 generator client {
@@ -24,7 +24,6 @@ model Analytics {
 model PageView {
     id          Int       @id @default(autoincrement())
     url         String
-    count       Int
     analyticsId Int
     analytics   Analytics @relation(fields: [analyticsId], references: [id])
 }
@@ -32,7 +31,6 @@ model PageView {
 model Referrer {
     id          Int       @id @default(autoincrement())
     domain      String
-    count       Int
     analyticsId Int
     analytics   Analytics @relation(fields: [analyticsId], references: [id])
 }
@@ -40,7 +38,6 @@ model Referrer {
 model Browser {
     id          Int       @id @default(autoincrement())
     name        String
-    count       Int
     analyticsId Int
     analytics   Analytics @relation(fields: [analyticsId], references: [id])
 }
@@ -48,7 +45,6 @@ model Browser {
 model OS {
     id          Int       @id @default(autoincrement())
     name        String
-    count       Int
     analyticsId Int
     analytics   Analytics @relation(fields: [analyticsId], references: [id])
 }
@@ -56,7 +52,6 @@ model OS {
 model Country {
     id          Int       @id @default(autoincrement())
     name        String
-    count       Int
     analyticsId Int
     analytics   Analytics @relation(fields: [analyticsId], references: [id])
 }
@@ -64,7 +59,6 @@ model Country {
 model Device {
     id          Int       @id @default(autoincrement())
     type        String
-    count       Int
     analyticsId Int
     analytics   Analytics @relation(fields: [analyticsId], references: [id])
 }
