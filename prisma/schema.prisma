@@ -1,0 +1,69 @@
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model Analytics {
+    id        Int        @id @default(autoincrement())
+    timestamp DateTime   @default(now())
+    views     Int
+    visitors  Int
+    PageView  PageView[]
+    Referrer  Referrer[]
+    Browser   Browser[]
+    OS        OS[]
+    Country   Country[]
+    Device    Device[]
+}
+
+model PageView {
+    id          Int       @id @default(autoincrement())
+    url         String
+    count       Int
+    analyticsId Int
+    analytics   Analytics @relation(fields: [analyticsId], references: [id])
+}
+
+model Referrer {
+    id          Int       @id @default(autoincrement())
+    domain      String
+    count       Int
+    analyticsId Int
+    analytics   Analytics @relation(fields: [analyticsId], references: [id])
+}
+
+model Browser {
+    id          Int       @id @default(autoincrement())
+    name        String
+    count       Int
+    analyticsId Int
+    analytics   Analytics @relation(fields: [analyticsId], references: [id])
+}
+
+model OS {
+    id          Int       @id @default(autoincrement())
+    name        String
+    count       Int
+    analyticsId Int
+    analytics   Analytics @relation(fields: [analyticsId], references: [id])
+}
+
+model Country {
+    id          Int       @id @default(autoincrement())
+    name        String
+    count       Int
+    analyticsId Int
+    analytics   Analytics @relation(fields: [analyticsId], references: [id])
+}
+
+model Device {
+    id          Int       @id @default(autoincrement())
+    type        String
+    count       Int
+    analyticsId Int
+    analytics   Analytics @relation(fields: [analyticsId], references: [id])
+}
